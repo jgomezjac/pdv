@@ -1,0 +1,66 @@
+<div class='container mt-50'>
+	<div class='row'>
+		<div class='col-sm-3'></div>
+		<div class="col-12 col-sm-6 text-center text-secondary">
+			<span class='text-secondary'><i class="fas fa-5x fa-user-circle"></i></span>
+			<h3 class="h3 mb-3 fw-normal">Ingrese sus credenciales</h3>
+		</div>
+		<div class='col-sm-3'></div>
+	</div>
+	
+	<div class='row mt-3'>&nbsp;</div>
+	<div class='row text-center mb-5'>
+		<div class='col'></div>
+		<div class='col-md-4 col-sm-12'>
+			<main class="form-signin">
+			<form>
+				<div class="form-floating">
+					<input type="email" id='identificador' class="form-control bg-dark text-white"  placeholder="Email / Login">
+					<label for="identificador">Email / Login</label>
+				</div>
+				<div class="form-floating">
+					<input type="password" id='icontra' class="form-control bg-dark text-white rounded-0"  placeholder="Contraseña">
+					<label for="icontra">Contraseña</label>
+				</div>
+				<button class="w-100 btn btn-lg btn-success rounded-0 rounded-bottom" type="button" id='bingresar'>Login</button>
+			</form>
+			</main>
+		</div>
+		<div class='col'></div>
+	</div>
+	
+	<div class='row'>
+		<div class='col'></div>
+		<div class='col-xs-6 col-md-6 col-lg-6 col-sm-12'>
+			<span id='sconexion'></span>
+		</div>
+		<div class='col'></div>
+	</div>
+	
+	<div class='row'>
+		<div class='col'></div>
+		<div class='col-xs-6 col-md-6 col-lg-6 col-sm-12 text-center'>
+			<p class="text-muted">&copy; Cousa</p>
+		</div>
+		<div class='col'></div>
+	</div>
+</div>
+
+<script type='text/javascript'>
+	$(function(){
+		$('#identificador').focus();
+		if(typeof(Storage)!=="undefined")
+		{
+			if( localStorage.er_identif ) {
+				$('#identificador').val( localStorage.er_identif );
+				$('#icontra').val( localStorage.er_pass );
+			}
+		}
+		if($('#identificador').val()){
+			$('#icontra').focus();
+		}
+		
+		$('#botonMenuTop').addClass('cnovisible');
+		$('#bingresar').attr('onclick','mLogin.login()');
+	});
+</script>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.cousa.apps.pdv" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>pdvCalif</name>
+    <description>Puntos de Venta App</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        C2puntos
+    </author>
+
+    <access origin="*" />
+    <access origin="http://apps.cousa.com" />
+    <preference name="AndroidInsecureFileModeEnabled" value="true" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <platform name="android">
+		<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:usesCleartextTraffic="true" />
+            <!--<application android:networkSecurityConfig="@xml/network_security_config" />-->
+        </edit-config>
+        <!--<resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />-->
+    </platform>
+</widget>

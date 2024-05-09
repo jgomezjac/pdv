@@ -1,0 +1,122 @@
+<div class='container mt-50 cmenuPrincipal' style='z-index:-1'>
+	<div class='row mt-2'>
+		<div class='col-sm-12'>
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="javascript:" onclick="mMenu.irA('menu')"><i class="fas fa-home"></i>&nbsp;Menú principal</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><b>Calificación local</b></li>
+			  </ol>
+			</nav>
+		</div>
+	</div>
+	
+	<div class="row ">
+		<div class="col-sm-12">
+			<label for='igrupo'>Seleccione el grupo</label>
+			<select id='igrupo' class='form-select'>
+			</select>
+		</div>
+		<div class="col-sm-12 mt-2">
+			<label for='ilocal'>Seleccione el local</label>
+			<select id='ilocal' class='form-select'>
+			</select>
+		</div>
+		<div class="col-sm-12 mt-2">
+			<label>Calificación del local</label>
+			<br>
+			<div class='rating mt-1'>
+				<span class="fa fa-star fa-2x"></span>
+				<span class="fa fa-star fa-2x"></span>
+				<span class="fa fa-star fa-2x"></span>
+				<span class="fa fa-star fa-2x"></span>
+				<span class="fa fa-star fa-2x"></span>
+			</div>
+		</div>
+		
+		<div class="col-sm-12 mt-2">
+			<label for='iobservacion'>Observación</label>
+			<textarea id='iobservacion' class='form-control'></textarea>
+			</select>
+		</div>
+	</div>
+	
+	<div class="row ">
+		<div class="col-sm-12 mt-2">
+			<label>Fotos</label>
+		</div>
+	</div>
+	
+	<div class='row mt-2 mb-2' id="dgaleria">
+		
+	</div>
+	
+	<!--<div class="row mt-2 text-center text-lg-start" id='dgaleria'>
+    	
+			Espacio para la galeria
+		
+	</div>-->
+	
+	<!--<img class="cnovisible" src="img/demo1.jpg" id="demoFoto">-->
+
+	<div class="row ">
+		<div class="col-sm-12 text-end">
+			<span class='btn btn-success' onclick="enviar()">Enviar datos</span>
+		</div>
+	</div>
+
+	<footer>
+		lat : <span id="slatitud"></span>
+		long : <span id="slongitud"></span>
+	</footer>
+</div>
+<script type='text/javascript'>
+	var mVisita = Instancias.getInstancia('visita');
+	var mGaleria = new GaleriaClass('dgaleria');
+
+	if( mVisita !== null) {
+		mVisita.imprimirComboGrupos()
+		mVisita.imprimirCategoriasFotos();
+	}
+	
+	var rating= document.querySelector('.rating');
+	var mchildren = rating.children;
+	for( let n=0; n< mchildren.length; n++) {
+		let span = mchildren[n];
+		span.addEventListener("click", function(){
+			this.classList.add( 'checked');
+			for( let n2=0; n2< mchildren.length; n2++) {
+				let span2 = mchildren[n2];
+				if( n2<n) {
+					span2.classList.add( 'checked');
+				} else if( n2>n ) {
+					span2.classList.remove( 'checked');
+				}
+			}
+		})
+	}
+
+	function enviar() {
+		var mVisita = Instancias.getInstancia('visita');
+		mVisita.enviar();
+	}
+
+	if( DESDEMOVIL ) {
+		//navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo, { timeout: 30000 });
+		var watchId = navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true })
+	}
+	function geolocationSuccess (position) {
+		let slat = document.getElementById('slatitud');
+		slat.innerHTML= position.coords.latitude;
+		let slong = document.getElementById('slongitud');
+		slong.innerHTML= position.coords.longitude;
+	}
+	function geolocationError (error) {
+
+		let slat = document.getElementById('slatitud');
+		slat.innerHTML= 'error';
+		let slong = document.getElementById('slongitud');
+		slong.innerHTML= error.code+' '+error.message
+
+	}
+
+</script>

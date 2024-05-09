@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        
+		<!--<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline' 'unsafe-eval' 'self' https://cdn.jsdelivr.net http://apps.cousa.com http://apps.cousa.com/apps/cousa/servicios/app; connect-src * http://apps.cousa.com;">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' apps.cousa.com">-->
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        
+        <!-- NO CACHE -->
+        <meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="Sat, 01 Dec 1900 00:00:00 GMT">
+		<!-- FIN NO CACHE -->
+
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+        <script src="js/index.js"></script>
+        <title>PDV - Calificación puntos de venta</title>
+        
+        <link rel="stylesheet" type="text/css" href="plugins/bootstrap5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="plugins/bootstrap5/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" type="text/css" href="plugins/fontawesome/css/all.css">
+
+        		
+		<link rel="stylesheet" type="text/css" href="plugins/jquery/jquery-ui.min.css">
+        <script type="text/javascript" src="plugins/jquery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="plugins/jquery/jquery-ui.min.js"></script>
+        
+        <script type="text/javascript" src="plugins/angular/angular.min.js"></script>
+        <script type="text/javascript" src="plugins/angular/angular-route.min.js"></script>
+        <script type="text/javascript" src="plugins/angular/angular-animate.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js "></script>
+		<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css " rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+		
+        <script type='text/javascript'>
+        	let host		='http://apps.cousa.com';
+        	if( location.hostname=='localhost' ) {
+        		host ='http://'+location.hostname;
+        	}
+        	//host = 'http://192.168.1.64';
+        	let dirRecursos	= host+"/c2p_recursos";
+        	/*var arrArchivos	= [];
+        	arrArchivos.push({file:'servicios/c2pData/js/JDatacampo1.2.js'});
+        	arrArchivos.push({file:'servicios/c2pData/js/JDatareg1.0.js'});
+        	arrArchivos.push({file:'servicios/c2pData/js/JDatagrid1.2.9.js'});
+        	arrArchivos.push({file:'javascripts/c2pInterfaces/c2pEnter2Tab/Enter2Tab.js'});
+        	for( var na=0; na< arrArchivos.length; na++) {
+        		$.ajax({
+    		        async: false,
+    		        url: host+'/c2p_recursos/'+arrArchivos[na].file,
+    		        //url: arrArchivos[na].file,
+    		        dataType: 'script',
+    		        error:function(jqXHR,text_status,strError) {
+    		        	alert( "[ERR] " + text_status + " " + JSON.stringify(jqXHR) ) ;
+    					alert("Error: "+jqXHR+" - " +strError + host);
+    				},
+    		    });
+        	}*/
+        	function retornarUrlServicios() {
+        		return host+"/apps/cousa/servicios/app/pdv";
+        	}
+        </script>
+        <script type="text/javascript" >
+			let jurlJavascripts = retornarUrlServicios()+"/sjavascripts.php";
+        	let fetchRes = fetch(jurlJavascripts)
+			
+			fetchRes.then(
+				res => res.json()
+				).then(d => {
+	            	let jarchivos= d.archivos;
+	    			for(let ja=0; ja< jarchivos.length; ja++) {
+		        		jarchivo= jarchivos[ja]+"?rand="+Math.random();
+		        		loadScript( jarchivo ).then( carga=> {
+
+						}).catch( err => {
+							alert( err );
+						});
+		        	}
+	        	}
+	        )
+
+			function loadScript(src) {
+			    return new Promise(function (resolve, reject) {
+			        let s;
+			        s = document.createElement('script');
+			        s.src = src;
+			        //s.type ='module';
+			        s.onload = resolve;
+			        s.onerror = reject;
+			        document.head.appendChild(s);
+			    });
+			}
+		</script>
+
+        <script type="text/javascript" src="js/Funciones1.1.js"></script>
+        <script type="text/javascript" src="js/LoginClass.js"></script>
+        <script type="text/javascript" src="js/MenuClass1.0.js"></script>
+		<script type="text/javascript" src="js/GaleriaClass1.0.js"></script>
+    </head>
+    
+    <body ng-app="animateApp" class="bg-dark text-white">
+    
+    	<nav class="navbar navbar-dark fixed-top bg-navbarmp">
+    		<div class="container-fluid">	
+	      <a class="navbar-brand" href="javascript:">PDV - Calificación punto de venta</a>
+	     <button class="navbar-toggler collapsed cnovisible" id='botonMenuTop' type="button"  data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	
+	      <div class="navbar-collapse collapse" id="navbarsExample01">
+	        <ul class="navbar-nav mr-auto" id='ulmenu-usuario'>
+	        	
+	          <li class="nav-item active">
+	          	<!-- <a class="nav-link" data-toggle="collapse" href="javascript:">ALGO</a> -->
+	          </li>
+	          
+	        </ul>
+	      </div>
+	    	</div>  
+	    </nav>
+	    
+	    
+		<div class="container-fluid" id='dmain_container'>
+			<div class='page {{pageClass}}' ng-view></div>
+			<div class='row'>&nbsp;</div>
+		</div>
+
+		<div id='dmodalEspera'></div>
+		
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="plugins/bootstrap5/js/bootstrap.bundle.js"></script>
+        <script type="text/javascript" src="js/my_app.js"></script>
+        <script type='text/javascript'>
+	        $('.navbar-nav>li>a').on('click', function(){
+	            $('.navbar-collapse').collapse('hide');
+	        });
+        </script>
+        
+        
+    </body>
+	
+</html>
