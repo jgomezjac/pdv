@@ -1,51 +1,106 @@
-<div class='container mt-50'>
-	<div class='row'>
-		<div class='col-sm-3'></div>
-		<div class="col-12 col-sm-6 text-center text-secondary">
-			<span class='text-secondary'><i class="fas fa-5x fa-user-circle"></i></span>
-			<h3 class="h3 mb-3 fw-normal">Ingrese sus credenciales</h3>
-		</div>
-		<div class='col-sm-3'></div>
+<div class='
+		custom-container
+		mt-50
+		d-inline-flex
+		flex-column
+		text-center
+		gap-3
+		p-4
+		rounded
+	'>
+	<style>
+		.custom-container {
+			background-color: #141414
+		}
+		@media (max-width: 700px) {
+			.custom-container {
+				width: 100%;
+			}
+		}
+		@media (min-width: 700px) {
+			.custom-container {
+				margin-left: 50%;
+				transform: translateX(-50%)
+			}
+		}
+	</style>
+	<div class='text-secondary'>
+		<span class='text-secondary'>
+			<i class="mb-2 fas fa-5x fa-user-circle"></i>
+		</span>
+		<h3>Ingrese sus credenciales</h3>
 	</div>
-	
-	<div class='row mt-3'>&nbsp;</div>
-	<div class='row text-center mb-5'>
-		<div class='col'></div>
-		<div class='col-md-4 col-sm-12'>
-			<main class="form-signin">
-			<form>
-				<div class="form-floating">
-					<input type="email" id='identificador' class="form-control bg-dark text-white"  placeholder="Email / Login">
-					<label for="identificador">Email / Login</label>
-				</div>
-				<div class="form-floating">
-					<input type="password" id='icontra' class="form-control bg-dark text-white rounded-0"  placeholder="Contraseña">
-					<label for="icontra">Contraseña</label>
-				</div>
-				<button class="w-100 btn btn-lg btn-success rounded-0 rounded-bottom" type="button" id='bingresar'>Login</button>
-			</form>
-			</main>
+	<form class="form-signin">
+		<div class="form-floating">
+			<input type="email" id='identificador' class="
+					bg-dark
+					mb-2 
+					border-0
+					form-control 
+					text-white
+				"  
+				placeholder="Email / Login">
+			<label class="
+					text-secondary" 
+				for="identificador">Email / Login</label>
 		</div>
-		<div class='col'></div>
-	</div>
-	
-	<div class='row'>
-		<div class='col'></div>
-		<div class='col-xs-6 col-md-6 col-lg-6 col-sm-12'>
-			<span id='sconexion'></span>
-		</div>
-		<div class='col'></div>
-	</div>
-	
-	<div class='row'>
-		<div class='col'></div>
-		<div class='col-xs-6 col-md-6 col-lg-6 col-sm-12 text-center'>
-			<p class="text-muted">&copy; Cousa</p>
-		</div>
-		<div class='col'></div>
-	</div>
-</div>
+		<div class="form-floating position-relative">
+			<input type="password" id='icontra' class="
+					bg-dark
+					mb-2 
+					border-0
+					form-control 
+					text-white
+				" 
+				placeholder="Contraseña">
+			<label class="text-secondary" for="icontra">Contraseña</label>
 
+			<i class="fas fa-eye custom-position"></i>
+
+			<script>
+				let eyePass = document.querySelector(".custom-position");
+				let inputPass = document.querySelector("#icontra")
+					eyePass.onclick = function() {
+						if (eyePass.classList.contains("fa-eye")) {
+							eyePass.classList.toggle("fa-eye")
+							eyePass.classList.toggle("fa-eye-slash")
+							inputPass.type = "input"
+							return
+						}
+						eyePass.classList.toggle("fa-eye-slash")
+						eyePass.classList.toggle("fa-eye")
+						inputPass.type = "password"
+					}
+			</script>
+
+			<style>
+				.custom-position {
+					position: absolute;
+					top: 50%;
+					right: 10px;
+					transform: translateY(-50%);
+					color: gray;
+					padding: 4px;
+					border-radius: 100%;
+					cursor: pointer;
+					transition: color .4s;
+				}
+				.custom-position:hover {
+					color: #d0d0d0
+				}
+			</style>
+		</div>
+		<button 
+			class="
+				w-100 
+				btn 
+				btn-lg 
+				btn-danger" 
+			type="button" id='bingresar'>Login</button>
+	</form>
+	<span id='sconexion'></span>
+	<p class="text-muted">&copy; Cousa</p>
+</div>
 <script type='text/javascript'>
 	$(function(){
 		$('#identificador').focus();
