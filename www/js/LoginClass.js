@@ -1,15 +1,19 @@
 class LoginClass {
-	usr;
-	acc;
-	urlServicios;
-	nombreApp;
-	enProceso;
 	
 	constructor() {
 		this.usr='';
 		this.acc='';
+		this.sid='';
+		this.urlServicios='';
+		this.nombreApp='';
+		this.enProceso=false;
 	}
-	
+	getSid() {
+		return this.sid;
+	}
+	getAcc() {
+		return this.acc;
+	}
 	setUrlServicios(jset) {
 		this.urlServicios=jset;
 	}
@@ -45,16 +49,16 @@ class LoginClass {
 					if( datos.error> 0 ) {
 						alert( datos.mensaje ); 
 					} else {
+						this.sid= datos.sid;
+						this.acc= datos.acc;
 						document.location.href='#!menu' 
 					}
-					Funciones.cerrarEspera();
 	       		}
 	    	).catch( err => {
 					this.enProceso=false
 					alert( err );
-					Funciones.cerrarEspera();
 				}
-			)
+			).finally ( Funciones.cerrarEspera() )
 		this.enProceso=false;
 	}
 }

@@ -23,9 +23,9 @@ class VisitaClass {
 	
 	inicializar() {
 		Funciones.esperar();
-		let term= "&usr="+this.usr;
-		term 	+= "&acc="+ this.acc;
-		
+		let term= "&sid="+mLogin.getSid();
+		term+= "&acc="+mLogin.getAcc();
+
 		let jurlServicio	= retornarUrlServicios()+"/sinicializar.php?"+term;
         let fetchRes		= fetch(jurlServicio)
 		fetchRes.then(
@@ -130,8 +130,8 @@ class VisitaClass {
 	retornarLocales() {
 
 		Funciones.esperar();
-		let term= "&usr="+this.usr;
-		term 	+= "&acc="+ this.acc;
+		let term= "&sid="+ mLogin.getSid();
+		term 	+= "&acc="+ mLogin.getAcc();
 		term 	+= "&pidGrupo="+ this.idGrupoSeleccionado;
 		
 		let jurlServicio	= retornarUrlServicios()+"/sretornarLocales.php?"+term;
