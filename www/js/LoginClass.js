@@ -53,12 +53,19 @@ class LoginClass {
 						this.acc= datos.acc;
 						document.location.href='#!menu' 
 					}
+					Funciones.cerrarEspera();
 	       		}
 	    	).catch( err => {
 					this.enProceso=false
 					alert( err );
 				}
-			).finally ( Funciones.cerrarEspera() )
+			)//.finally ( )
 		this.enProceso=false;
+	}
+	salir() {
+		mMenu=null;
+		setTimeout(function(){
+			document.location.href='#!/';
+		},500);
 	}
 }

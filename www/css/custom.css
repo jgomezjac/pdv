@@ -1,3 +1,29 @@
+.videoContainer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index:-9999;
+}
+.videoContainer_in {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	background-color:#000;
+	opacity:0.7;
+	z-index:-9998;
+	min-width: 100%;
+	min-height: 100%;
+}
+.videoFondo {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index:-9999;
+	min-width: 100%;
+	min-height: 100%;
+}
+
 .h100 {
 	height:100px;
 	min-height:100px;

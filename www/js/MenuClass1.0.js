@@ -4,15 +4,20 @@ class MenuClass {
 
 	}
 	irA( jdestino) {
-		switch( jdestino ) 
+		let jlink = '';
+		jlink=`#!${jdestino}`
+		/*switch( jdestino ) 
 		{
 			case "registrarVisita":
-				document.location.href='#!registrarVisita'
+				jlink='#!registrarVisita'
 				break;
 			default:
-				document.location.href=`#!${jdestino}`
+				jlink=`#!${jdestino}`
 				break;
-		}
+		}*/
+		setTimeout(function(){
+			document.location.href=jlink;
+		},500);
 	}
 	
 }

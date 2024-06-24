@@ -1,0 +1,54 @@
+.cmenuPrincipal .card-body-right .card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -25px;
+    right: -25px;
+    font-size: 5rem;
+    color:#17A2B8;
+    opacity:0.4;
+    -webkit-transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  .cmenuPrincipal .card-body-right .card-body-icon.card-body-icon-warning {
+      color:#faba66;
+  }
+  
+  .cmenuPrincipal .card-body-left .card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -25px;
+    left: -25px;
+    font-size: 5rem;
+    color:#17A2B8;
+    opacity:0.4;
+    -webkit-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    transform: rotate(-15deg);	
+  }
+  .cmenuPrincipal .card-body-left .calerta {
+      position:absolute;
+      right:10px;
+      top:10px;
+      font-size:1.5rem;	
+  }
+  
+  .cmenuPrincipal .card-body-right .calerta {
+      position:absolute;
+      left:10px;
+      top:10px;
+      font-size:1.5rem;	
+  }
+  
+  .cmenuPrincipal .card-title, .card-text {
+      position:relative;
+      /*z-index:99999;*/
+  }
+  .cmenuPrincipal .card {
+      background-color:#515151;
+      cursor:pointer;
+  }
+  .cmenuPrincipal .card:hover {
+      background-color:#E30B50;
+      color:#fff;
+  }
