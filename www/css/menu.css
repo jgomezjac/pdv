@@ -45,10 +45,55 @@
       /*z-index:99999;*/
   }
   .cmenuPrincipal .card {
-      background-color:#515151;
-      cursor:pointer;
+      /* background-color:#515151; */
+      background-color:#242424;
+      cursor: pointer;
+      position: relative;
   }
-  .cmenuPrincipal .card:hover {
-      background-color:#E30B50;
-      color:#fff;
-  }
+  .cmenuPrincipal .card::after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border: 5px solid #E30B50;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+.cmenuPrincipal .card:hover::after {
+    display: block;
+    animation: borderBlock .4s ease-in-out;
+    top: -25%;
+    left: -10%;
+    width: 120%;
+    height: 150%;
+}
+@keyframes borderBlock {
+    0% {
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        top: -25%;
+        left: -10%;
+        width: 120%;
+        height: 150%;
+    }
+}
+.cmenuPrincipal .card:hover {
+    /* background-color:#E30B50; */
+    background-color:#E30B50;
+    color:#fff;
+}
+.customHidden {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
