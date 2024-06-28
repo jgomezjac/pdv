@@ -39,28 +39,33 @@ animateApp.config(function($routeProvider) {
 		templateUrl: 'menu.html?'+$.now(),
 		controller: 'menuController'
 	})
+	.when('/misVisitas', {
+		cache: false,
+		disableCache: true,
+		templateUrl: 'misVisitas.html?'+$.now(),
+		controller: 'misVisitasController'
+	})
 	.when('/registrarVisita', {
 		cache: false,
 		disableCache: true,
 		templateUrl: 'registrarVisita.html?'+$.now(),
 		controller: 'registrarVisitaController'
 	})
-	.when('/menu/:param1/:param2', {
-		cache: false,
-		disableCache: true,
-		templateUrl: 'menu.html?'+$.now(),
-		controller: 'menuController'
-	})
+
 });
 
 animateApp.controller('menuController', function($scope) {
-	$scope.pageClass = 'menu-login';
+	$scope.pageClass = 'page-menu';
+	if(mMenu == null) {
+		mMenu = new MenuClass();
+	} 
 })
-
 animateApp.controller('registrarVisitaController', function($scope) {
 	$scope.pageClass = 'page-visita';
 })
-
+animateApp.controller('misVisitasController', function($scope) {
+	$scope.pageClass = 'page-misvisitas';
+})
 animateApp.controller('loginController', function($scope) {
 	$scope.pageClass = 'page-login';
 })

@@ -210,8 +210,9 @@ class VisitaClass {
 		}
 		Funciones.esperar();
 
-		let term= "&usr="+this.usr;
-		term 	+= "&acc="+ this.acc;
+		//let term= "&usr="+this.usr;
+		let term= "&sid="+ mLogin.getSid();
+		term 	+= "&acc="+ mLogin.getAcc();
 		term 	+= "&pidGrupo="+ grupo;
 		term 	+= "&pidLocal="+ local;
 		term 	+= "&pcalif="+ calificacion;

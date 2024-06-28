@@ -19,7 +19,12 @@ class Instancias {
 						Instancias.agregarInstancia(jidInstancia, jretornar)
 					})
 					break;
-					
+				case 'misVisitas':
+					loadScript('js/MisVisitasClass1.0.js?'+rand).then( carga => {
+						let jretornar= new MisVisitasClass();
+						Instancias.agregarInstancia(jidInstancia, jretornar)
+					})
+					break;
 			}
 		} 
 		return jretornar;

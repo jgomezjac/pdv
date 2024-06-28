@@ -1,0 +1,22 @@
+<div class='container mt-50 cmenuPrincipal' style='z-index:-1'>
+	<div class='row mt-2'>
+		<div class='col-sm-12'>
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="javascript:" onclick="mMenu.irA('menu')"><i class="fas fa-home"></i>&nbsp;Menú principal</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><b>Mis visitas</b></li>
+			  </ol>
+			</nav>
+		</div>
+	</div>
+	
+	<ul class="list-group list-group-flush" id="umisVisitas">
+
+	</ul>
+</div>
+<script type='text/javascript'>
+	var mMisVisitas = Instancias.getInstancia('misVisitas');
+	if(mMisVisitas!=null) {
+		mMisVisitas.retornarMisVisitas();
+	}
+</script>

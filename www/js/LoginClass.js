@@ -14,6 +14,9 @@ class LoginClass {
 	getAcc() {
 		return this.acc;
 	}
+	getUsr() {
+		return this.usr;
+	}
 	setUrlServicios(jset) {
 		this.urlServicios=jset;
 	}
@@ -51,6 +54,7 @@ class LoginClass {
 					} else {
 						this.sid= datos.sid;
 						this.acc= datos.acc;
+						this.usr= datos.usr;
 						document.location.href='#!menu' 
 					}
 					Funciones.cerrarEspera();
@@ -63,6 +67,9 @@ class LoginClass {
 		this.enProceso=false;
 	}
 	salir() {
+		let conf=confirm('Esta seguro/a?');
+		if(!conf) return;
+		
 		mMenu=null;
 		setTimeout(function(){
 			document.location.href='#!/';
